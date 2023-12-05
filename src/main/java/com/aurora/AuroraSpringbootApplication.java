@@ -21,5 +21,4 @@ public class AuroraSpringbootApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
 }
