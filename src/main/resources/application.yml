@@ -1,0 +1,9 @@
+#基础
+spring:
+  application:
+    name: aurora
+  profiles:
+    active: '@profile.name@'
+server:
+  servlet:
+    context-path: /aurora
