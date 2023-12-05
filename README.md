@@ -1,3 +1,15 @@
+
+# 稀稀拉拉的备注
+###文件本地上传方式
+    upload.local.dir 指定服务器路径，直接nginx转发访问静态文件 路径  /file/xxxx
+### rabbitmq 移除 
+    替代品ApplicationEvent
+### redis移除
+    concurrenthashmap ,本地缓存，可能存在redis功能上的一些问题，待修复！！！
+### 数据库的轻量化【待做】 
+    sqllite?
+### mine
+    blog.jonk.top   blog.jonk.top/admin/
 #部署
 
 ## 本地运行
