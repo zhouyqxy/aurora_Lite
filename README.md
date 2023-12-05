@@ -12,6 +12,10 @@
     blog.jonk.top   blog.jonk.top/admin/
 #部署
 
+### unix 后台运行
+nohup java -jar -server -Xms512M -Xmx512M  -XX:+HeapDumpOnOutOfMemoryError   -XX:HeapDumpPath=./dump/dump /var/data/jonkBlog-0.0.1.jar >temp.txt 2>&1 &
+
+
 ## 本地编译
 
     mvn clean  install -P dev
