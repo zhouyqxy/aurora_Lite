@@ -33,10 +33,10 @@ public class Menu {
     private Integer isHidden;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private String createTime;
 
     @TableField(fill = FieldFill.UPDATE)
-    private LocalDateTime updateTime;
+    private String updateTime;
 
 }
 

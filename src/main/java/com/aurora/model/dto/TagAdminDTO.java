@@ -19,6 +19,6 @@ public class TagAdminDTO {
 
     private Integer articleCount;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

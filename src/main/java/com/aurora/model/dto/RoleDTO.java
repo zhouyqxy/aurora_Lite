@@ -19,7 +19,7 @@ public class RoleDTO {
 
     private String roleName;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
     private Integer isDisable;
 

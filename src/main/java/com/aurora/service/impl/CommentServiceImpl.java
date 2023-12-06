@@ -16,10 +16,7 @@ import com.aurora.model.vo.ConditionVO;
 import com.aurora.model.vo.ReviewVO;
 import com.aurora.service.AuroraInfoService;
 import com.aurora.service.CommentService;
-import com.aurora.util.EmailUtil;
-import com.aurora.util.HTMLUtil;
-import com.aurora.util.PageUtil;
-import com.aurora.util.UserUtil;
+import com.aurora.util.*;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -31,6 +28,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -281,7 +279,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
                 emailDTO.setEmail(userInfo.getEmail());
                 emailDTO.setSubject(COMMENT_REMIND);
                 emailDTO.setTemplate("owner.html");
-                String createTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(comment.getCreateTime());
+                String createTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                        .format(LazycatDateUtil.timestamToDatetime(comment.getCreateTime()));
                 map.put("time", createTime);
                 map.put("url", url);
                 map.put("title", title);
@@ -297,7 +296,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
                 emailDTO.setTemplate("user.html");
                 map.put("url", url);
                 map.put("title", title);
-                String createTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(parentComment.getCreateTime());
+                String createTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                        .format(LazycatDateUtil.timestamToDatetime(parentComment.getCreateTime()));
                 map.put("time", createTime);
                 map.put("toUser", userInfo.getNickname());
                 map.put("fromUser", fromNickname);

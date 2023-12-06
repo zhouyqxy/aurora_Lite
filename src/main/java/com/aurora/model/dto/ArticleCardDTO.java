@@ -36,8 +36,8 @@ public class ArticleCardDTO {
 
     private Integer status;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
-    private LocalDateTime updateTime;
+    private String updateTime;
 
 }

@@ -30,6 +30,6 @@ public class TalkDTO {
 
     private Integer commentCount;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

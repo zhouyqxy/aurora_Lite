@@ -17,6 +17,7 @@ import com.aurora.service.impl.UserDetailServiceImpl;
 import com.aurora.strategy.SocialLoginStrategy;
 import com.aurora.util.BeanCopyUtil;
 import com.aurora.util.IpUtil;
+import com.aurora.util.LazycatDateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,7 +107,7 @@ public abstract class AbstractSocialLoginStrategyImpl implements SocialLoginStra
                 .username(socialToken.getOpenId())
                 .password(socialToken.getAccessToken())
                 .loginType(socialToken.getLoginType())
-                .lastLoginTime(LocalDateTime.now())
+                .lastLoginTime(LazycatDateUtil.datatimeToTimestamp(LocalDateTime.now())+"")
                 .ipAddress(ipAddress)
                 .ipSource(ipSource)
                 .build();

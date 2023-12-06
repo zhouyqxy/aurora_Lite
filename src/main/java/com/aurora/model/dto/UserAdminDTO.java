@@ -31,9 +31,9 @@ public class UserAdminDTO {
 
     private String ipSource;
 
-    private Date createTime;
+   private String createTime;
 
-    private Date lastLoginTime;
+   private String lastLoginTime;
 
     private Integer isDisable;
 

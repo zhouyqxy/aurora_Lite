@@ -5,12 +5,19 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import java.security.AccessControlException;
+
 
 @Component
 public class UserUtil {
 
     public static UserDetailsDTO getUserDetailsDTO() {
-        return (UserDetailsDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        try{
+            return (UserDetailsDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }catch (Exception e){
+            throw  new AccessControlException("登录超时");
+        }
+
     }
 
     public static Authentication getAuthentication() {

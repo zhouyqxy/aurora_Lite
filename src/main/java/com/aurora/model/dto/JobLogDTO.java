@@ -30,10 +30,10 @@ public class JobLogDTO {
 
     private String exceptionInfo;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
-    private Date startTime;
+   private String startTime;
 
-    private Date endTime;
+   private String endTime;
 
 }

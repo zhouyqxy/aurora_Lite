@@ -43,9 +43,9 @@ public class ArticleDTO {
 
     private String originalUrl;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
-    private LocalDateTime updateTime;
+    private String updateTime;
 
     private ArticleCardDTO preArticleCard;
 

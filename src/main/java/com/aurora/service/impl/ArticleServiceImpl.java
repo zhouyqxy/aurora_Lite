@@ -21,6 +21,7 @@ import com.aurora.service.TagService;
 import com.aurora.strategy.context.SearchStrategyContext;
 import com.aurora.strategy.context.UploadStrategyContext;
 import com.aurora.util.BeanCopyUtil;
+import com.aurora.util.LazycatDateUtil;
 import com.aurora.util.PageUtil;
 import com.aurora.util.UserUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -194,7 +195,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         List<ArticleCardDTO> articles = articleMapper.listArchives(PageUtil.getLimitCurrent(), PageUtil.getSize());
         HashMap<String, List<ArticleCardDTO>> map = new HashMap<>();
         for (ArticleCardDTO article : articles) {
-            LocalDateTime createTime = article.getCreateTime();
+            LocalDateTime createTime = LazycatDateUtil.timestamToDatetime(article.getCreateTime());
             int month = createTime.getMonth().getValue();
             int year = createTime.getYear();
             String key = year + "-" + month;

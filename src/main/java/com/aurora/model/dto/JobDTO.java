@@ -30,10 +30,10 @@ public class JobDTO {
 
     private Integer status;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
     private String remark;
 
-    private Date nextValidTime;
+   private String nextValidTime;
 
 }

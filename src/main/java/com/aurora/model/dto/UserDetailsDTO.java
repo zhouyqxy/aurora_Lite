@@ -61,11 +61,11 @@ public class UserDetailsDTO implements UserDetails {
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime expireTime;
+    private String expireTime;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime lastLoginTime;
+    private String lastLoginTime;
 
     @Override
     @Transient

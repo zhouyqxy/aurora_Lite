@@ -31,6 +31,6 @@ public class CommentAdminDTO {
 
     private Integer isReview;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

@@ -15,6 +15,7 @@ import com.aurora.model.dto.UserAreaDTO;
 import com.aurora.model.vo.ArticleVO;
 import com.aurora.service.*;
 import com.aurora.util.IpUtil;
+import com.aurora.util.LazycatDateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -77,7 +78,7 @@ public class AuroraQuartz {
     public void saveUniqueView() {
         Long count = redisService.sSize(UNIQUE_VISITOR);
         UniqueView uniqueView = UniqueView.builder()
-                .createTime(LocalDateTimeUtil.offset(LocalDateTime.now(), -1, ChronoUnit.DAYS))
+                .createTime(LazycatDateUtil.localDateTimeToTim(LocalDateTimeUtil.offset(LocalDateTime.now(), -1, ChronoUnit.DAYS)))
                 .viewsCount(Optional.of(count.intValue()).orElse(0))
                 .build();
         uniqueViewMapper.insert(uniqueView);
@@ -161,16 +162,16 @@ public class AuroraQuartz {
             return;
         }
         LocalDateTime localDateTime;
-        if (articles.size() > 1) {
-            Article article1 = articles.stream().filter(item -> item.getUpdateTime() != null).max(Comparator.comparing(Article::getUpdateTime)).get();
-            Article article2 = articles.stream().max(Comparator.comparing(Article::getCreateTime)).get();
-            localDateTime = article2.getCreateTime().isAfter(article1.getUpdateTime()) ? article2.getCreateTime() : article1.getUpdateTime();
-        } else {
-            Article article = articles.get(0);
-            localDateTime = articles.get(0).getUpdateTime() == null ? article.getCreateTime() : article.getUpdateTime();
-        }
-        long milli = localDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-        redisService.set(ES_SYNC_KEY, milli);
+//        if (articles.size() > 1) {
+//            Article article1 = articles.stream().filter(item -> item.getUpdateTime() != null).max(Comparator.comparing(Article::getUpdateTime)).get();
+//            Article article2 = articles.stream().max(Comparator.comparing(Article::getCreateTime)).get();
+//            localDateTime = article2.getCreateTime().isAfter(article1.getUpdateTime()) ? article2.getCreateTime() : article1.getUpdateTime();
+//        } else {
+//            Article article = articles.get(0);
+//            localDateTime = articles.get(0).getUpdateTime() == null ? article.getCreateTime() : article.getUpdateTime();
+////        }
+//        long milli = localDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+//        redisService.set(ES_SYNC_KEY, milli);
 //        for (Article article : articles) {
 //            elasticsearchMapper.save(BeanCopyUtil.copyObject(article, ArticleSearchDTO.class));
 //        }
@@ -230,7 +231,7 @@ public class AuroraQuartz {
         Talk talk = new Talk();
         talk.setUserId(ArticleConstant.NET_WORK_HOT_USER_ID);
         talk.setContent(soup.getText());
-        talk.setCreateTime(LocalDateTime.now());
+        talk.setCreateTime(LazycatDateUtil.localDateTimeToTim(LocalDateTime.now()));
         talkService.save(talk);
     }
 

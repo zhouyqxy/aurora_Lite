@@ -9,6 +9,7 @@ import com.aurora.mapper.RoleMapper;
 import com.aurora.mapper.UserAuthMapper;
 import com.aurora.mapper.UserInfoMapper;
 import com.aurora.util.IpUtil;
+import com.aurora.util.LazycatDateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import eu.bitwalker.useragentutils.UserAgent;
@@ -79,7 +80,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 .isDisable(userInfo.getIsDisable())
                 .browser(userAgent.getBrowser().getName())
                 .os(userAgent.getOperatingSystem().getName())
-                .lastLoginTime(LocalDateTime.now())
+                .lastLoginTime(LazycatDateUtil.datatimeToTimestamp(LocalDateTime.now())+"")
                 .build();
     }
 

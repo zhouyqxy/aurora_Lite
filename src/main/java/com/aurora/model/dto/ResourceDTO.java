@@ -26,7 +26,7 @@ public class ResourceDTO {
 
     private Integer isAnonymous;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
     private List<ResourceDTO> children;
 

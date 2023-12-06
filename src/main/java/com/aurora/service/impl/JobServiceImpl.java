@@ -11,10 +11,7 @@ import com.aurora.model.vo.JobSearchVO;
 import com.aurora.model.vo.JobStatusVO;
 import com.aurora.model.vo.JobVO;
 import com.aurora.service.JobService;
-import com.aurora.util.BeanCopyUtil;
-import com.aurora.util.CronUtil;
-import com.aurora.util.PageUtil;
-import com.aurora.util.ScheduleUtil;
+import com.aurora.util.*;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -91,7 +88,7 @@ public class JobServiceImpl extends ServiceImpl<JobMapper, Job> implements JobSe
         Job job = jobMapper.selectById(jobId);
         JobDTO jobDTO = BeanCopyUtil.copyObject(job, JobDTO.class);
         Date nextExecution = CronUtil.getNextExecution(jobDTO.getCronExpression());
-        jobDTO.setNextValidTime(nextExecution);
+        jobDTO.setNextValidTime(LazycatDateUtil.dateTimeConvertToTimestamp(nextExecution));
         return jobDTO;
     }
 

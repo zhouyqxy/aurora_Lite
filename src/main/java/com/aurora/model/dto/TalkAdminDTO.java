@@ -30,6 +30,6 @@ public class TalkAdminDTO {
 
     private Integer status;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

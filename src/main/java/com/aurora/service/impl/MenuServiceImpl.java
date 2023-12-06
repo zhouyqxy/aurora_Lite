@@ -122,10 +122,14 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
 
     @Override
     public List<UserMenuDTO> listUserMenus() {
-        List<Menu> menus = menuMapper.listMenusByUserInfoId(UserUtil.getUserDetailsDTO().getUserInfoId());
-        List<Menu> catalogs = listCatalogs(menus);
-        Map<Integer, List<Menu>> childrenMap = getMenuMap(menus);
-        return convertUserMenuList(catalogs, childrenMap);
+        try {
+            List<Menu> menus = menuMapper.listMenusByUserInfoId(UserUtil.getUserDetailsDTO().getUserInfoId());
+            List<Menu> catalogs = listCatalogs(menus);
+            Map<Integer, List<Menu>> childrenMap = getMenuMap(menus);
+            return convertUserMenuList(catalogs, childrenMap);
+        }catch (Exception e){
+            return  new ArrayList<>();
+        }
     }
 
     private List<Menu> listCatalogs(List<Menu> menus) {
