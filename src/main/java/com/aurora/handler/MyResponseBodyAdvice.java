@@ -41,30 +41,32 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
         try {
             String bodyStr = JSON.toJSONString(body);
             JSONObject jsonObject = JSONObject.parseObject(bodyStr);
-            log.info(" bodyStr {}", bodyStr);
             try {
-                JSONObject data = jsonObject.getJSONObject("data");
-                if (data != null) {
-                    updateTime(jsonObject);
-                }
-                jsonObject.forEach((key, value) -> {
-                    if (value instanceof JSONObject) {
-                        updateTime((JSONObject) value);
-                    } else if (value instanceof JSONArray) {
-                        arrUpdate((JSONArray) value);
-                    }
-                });
+//                JSONObject data = jsonObject.getJSONObject("data");
+//                if (data != null) {
+//                    updateTime(jsonObject);
+//                }
+                udpateJson(jsonObject);
             } catch (ClassCastException e) {
                 JSONArray dataArr = jsonObject.getJSONArray("data");
                 arrUpdate(dataArr);
             }
             body = jsonObject;
-            log.info(" bodyStr {}", body);
         }catch (Exception e){
 
         }
         return body;
 
+    }
+
+    private void udpateJson(JSONObject jsonObject) {
+        jsonObject.forEach((key, value) -> {
+            if (value instanceof JSONObject) {
+                updateTime((JSONObject) value);
+            } else if (value instanceof JSONArray) {
+                arrUpdate((JSONArray) value);
+            }
+        });
     }
 
     private  void arrUpdate(JSONArray dataArr ){
@@ -83,8 +85,11 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
      */
     private void updateTime(JSONObject data) {
         try {
-            data.put("createTime", LazycatDateUtil.timestamToDate(data.getLong("createTime")));
-            data.put("updateTime", LazycatDateUtil.timestamToDate(data.getLong("updateTime")));
+            udpateJson(data);
+            if(data.get("createTime")!=null) {
+                data.put("createTime", LazycatDateUtil.timestamToDate(data.getLong("createTime")));
+                data.put("updateTime", LazycatDateUtil.timestamToDate(data.getLong("updateTime")));
+            }
         }catch (Exception e){
             log.info("err ",e.getMessage());
         }

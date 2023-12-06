@@ -27,3 +27,5 @@ target
 /.idea/
 /.gitee/
 /log/
+/src/main/resources/application-dev.yml
+/src/main/resources/application-prod.yml
