@@ -6,10 +6,11 @@
     替代品ApplicationEvent
 ### redis移除
     concurrenthashmap ,本地缓存，可能存在redis功能上的一些问题，待修复！！！
-### 数据库的轻量化【待做】 
-    sqllite?
-### mine
-    blog.jonk.top   blog.jonk.top/admin/
+### 数据库的轻量化  
+    sqllite替换mysql，更改较大，sqlite无date数据类型，
+    需配置data.db路径 url: jdbc:sqlite:sqlite/data.db 代表启动目录下  sqlite/data.db 
+### myblog 
+    https://blog.jonk.top
 #部署
 
 ### unix 后台运行
