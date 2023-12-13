@@ -24,7 +24,7 @@ public class MenuDTO {
 
     private String icon;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
     private Integer orderNum;
 

@@ -33,14 +33,14 @@ public class Job {
     private Integer status;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private String createTime;
 
     @TableField(fill = FieldFill.UPDATE)
-    private LocalDateTime updateTime;
+    private String updateTime;
 
     private String remark;
 
     @TableField(exist = false)
-    private Date nextValidTime;
+   private String nextValidTime;
 
 }

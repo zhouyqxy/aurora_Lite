@@ -33,6 +33,6 @@ public class ReplyDTO {
 
     private String commentContent;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

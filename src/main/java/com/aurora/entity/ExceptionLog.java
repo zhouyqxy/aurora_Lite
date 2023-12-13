@@ -38,6 +38,6 @@ public class ExceptionLog {
     private Boolean unknownException;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

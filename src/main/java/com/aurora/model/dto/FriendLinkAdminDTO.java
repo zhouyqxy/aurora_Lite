@@ -24,6 +24,6 @@ public class FriendLinkAdminDTO {
 
     private String linkIntro;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

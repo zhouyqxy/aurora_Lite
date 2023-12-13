@@ -104,7 +104,11 @@ public class RedisServiceImpl implements RedisService {
         } else {
             map = (Map) o;
             Integer value = map.get(key2);
-            value = value + num;
+            if (value != null) {
+                value = value + num;
+            } else {
+                value = num;
+            }
             map.put(key2, value);
             set(key, map);
             return value;
@@ -129,10 +133,12 @@ public class RedisServiceImpl implements RedisService {
                     second = 60l;
                 }
                 Integer val = map.get(second);
-                result += val;
+                if(val!=null) {
+                    result += val;
+                    //暂存 重写设置缓存 移除旧数据
+                    newMap.put(second, val);
+                }
                 second--;
-                //暂存 重写设置缓存 移除旧数据
-                newMap.put(second, val);
             }
             //重设缓存，移除旧的
             o = null;

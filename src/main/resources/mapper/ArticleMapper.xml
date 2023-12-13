@@ -500,7 +500,7 @@
         a.id DESC
     </select>
     <select id="listArticleStatistics" resultType="com.aurora.model.dto.ArticleStatisticsDTO">
-        SELECT DATE_FORMAT(create_time, "%Y-%m-%d") AS date,
+        SELECT create_time AS date,
                COUNT(1)                             AS count
         FROM t_article
         GROUP BY date

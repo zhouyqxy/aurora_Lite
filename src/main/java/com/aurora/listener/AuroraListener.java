@@ -57,8 +57,8 @@ public class AuroraListener {
         ExceptionLog source = (ExceptionLog) exceptionLogEvent.getSource();
         exceptionLogMapper.insert(source);
         if (source.getUnknownException()) {
-            //未知异常 发送邮件 即使处理
-            sendExceptionEmail(source);
+            //未知异常 发送邮件 及时处理
+//            sendExceptionEmail(source);
         }
     }
 

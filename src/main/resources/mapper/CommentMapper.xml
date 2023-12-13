@@ -42,7 +42,7 @@
         c.parent_id,
         c.comment_content,
         c.create_time,
-        row_number () over ( PARTITION BY parent_id ORDER BY create_time ASC ) row_num
+        row_number () over ( PARTITION BY parent_id ORDER BY c.create_time ASC ) row_num
         FROM
         t_comment c
         JOIN t_user_info u ON c.user_id = u.id

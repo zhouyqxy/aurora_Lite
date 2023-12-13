@@ -25,9 +25,9 @@ public class UniqueView {
     private Integer viewsCount;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private String createTime;
 
     @TableField(fill = FieldFill.UPDATE)
-    private LocalDateTime updateTime;
+    private String updateTime;
 
 }

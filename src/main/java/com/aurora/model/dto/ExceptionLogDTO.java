@@ -32,6 +32,6 @@ public class ExceptionLogDTO {
 
     private String ipSource;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

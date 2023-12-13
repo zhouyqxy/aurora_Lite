@@ -37,7 +37,7 @@ public class UserInfoDTO {
 
     private String ipSource;
 
-    private LocalDateTime lastLoginTime;
+    private String lastLoginTime;
 
     private String token;
 

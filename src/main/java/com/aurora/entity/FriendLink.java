@@ -28,9 +28,9 @@ public class FriendLink {
     private String linkIntro;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private String createTime;
 
     @TableField(fill = FieldFill.UPDATE)
-    private LocalDateTime updateTime;
+    private String updateTime;
 
 }

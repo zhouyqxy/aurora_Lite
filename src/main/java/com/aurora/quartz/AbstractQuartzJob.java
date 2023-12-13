@@ -12,6 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
 import java.util.Date;
 
 import static com.aurora.constant.CommonConstant.ONE;
@@ -49,9 +53,9 @@ public abstract class AbstractQuartzJob implements org.quartz.Job {
         jobLog.setJobName(job.getJobName());
         jobLog.setJobGroup(job.getJobGroup());
         jobLog.setInvokeTarget(job.getInvokeTarget());
-        jobLog.setStartTime(startTime);
-        jobLog.setEndTime(new Date());
-        long runMs = jobLog.getEndTime().getTime() - jobLog.getStartTime().getTime();
+        jobLog.setStartTime(startTime.getTime()+"");
+        jobLog.setEndTime((new Date()).getTime()+"");
+        long runMs = Long.parseLong(jobLog.getEndTime()) - Long.parseLong(jobLog.getStartTime());
         jobLog.setJobMessage(jobLog.getJobName() + " 总共耗时：" + runMs + "毫秒");
         if (e != null) {
             jobLog.setStatus(ZERO);

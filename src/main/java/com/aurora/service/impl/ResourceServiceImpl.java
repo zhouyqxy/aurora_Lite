@@ -12,11 +12,13 @@ import com.aurora.service.ResourceService;
 import com.aurora.util.BeanCopyUtil;
 import com.aurora.model.vo.ConditionVO;
 import com.aurora.model.vo.ResourceVO;
+import com.aurora.util.LazycatDateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -59,7 +61,7 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> i
             Resource resource = Resource.builder()
                     .resourceName(item.get("name"))
                     .isAnonymous(FALSE)
-                    .createTime(LocalDateTime.now())
+                    .createTime(LazycatDateUtil.localDateTimeToTim(LocalDateTime.now()))
                     .build();
             resources.add(resource);
         });
@@ -78,7 +80,7 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> i
                     .parentId(parentId)
                     .requestMethod(requestMethod.toUpperCase())
                     .isAnonymous(FALSE)
-                    .createTime(LocalDateTime.now())
+                    .createTime(LazycatDateUtil.localDateTimeToTim(LocalDateTime.now()))
                     .build();
             resources.add(resource);
         }));

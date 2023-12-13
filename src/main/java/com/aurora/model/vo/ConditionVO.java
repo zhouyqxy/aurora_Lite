@@ -44,10 +44,10 @@ public class ConditionVO {
     private Integer status;
 
     @ApiModelProperty(name = "startTime", value = "开始时间", dataType = "LocalDateTime")
-    private LocalDateTime startTime;
+    private String startTime;
 
     @ApiModelProperty(name = "endTime", value = "结束时间", dataType = "LocalDateTime")
-    private LocalDateTime endTime;
+    private String endTime;
 
     @ApiModelProperty(name = "isDelete", value = "是否删除", dataType = "Integer")
     private Integer isDelete;

@@ -3,6 +3,7 @@ package com.aurora.service.impl;
 import com.aurora.model.dto.UserDetailsDTO;
 import com.aurora.service.RedisService;
 import com.aurora.service.TokenService;
+import com.aurora.util.LazycatDateUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -48,14 +49,14 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public void refreshToken(UserDetailsDTO userDetailsDTO) {
         LocalDateTime currentTime = LocalDateTime.now();
-        userDetailsDTO.setExpireTime(currentTime.plusSeconds(EXPIRE_TIME));
+        userDetailsDTO.setExpireTime(LazycatDateUtil.localDateTimeToTim(currentTime.plusSeconds(EXPIRE_TIME)));
         String userId = userDetailsDTO.getId().toString();
         redisService.hSet(LOGIN_USER, userId, userDetailsDTO);
     }
 
     @Override
     public void renewToken(UserDetailsDTO userDetailsDTO) {
-        LocalDateTime expireTime = userDetailsDTO.getExpireTime();
+        LocalDateTime expireTime = LazycatDateUtil.timestamToDatetime(userDetailsDTO.getExpireTime());
         LocalDateTime currentTime = LocalDateTime.now();
         if (Duration.between(currentTime, expireTime).toMinutes() <= TWENTY_MINUTES) {
             refreshToken(userDetailsDTO);

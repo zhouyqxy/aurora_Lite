@@ -26,7 +26,7 @@ public class CommentDTO {
 
     private String commentContent;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
     private List<ReplyDTO> replyDTOs;
 

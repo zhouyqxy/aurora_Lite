@@ -27,6 +27,6 @@ public class UserOnlineDTO {
 
     private String os;
 
-    private LocalDateTime lastLoginTime;
+    private String lastLoginTime;
 
 }

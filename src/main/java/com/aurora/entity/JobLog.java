@@ -35,9 +35,9 @@ public class JobLog {
     private String exceptionInfo;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private String createTime;
 
-    private Date startTime;
+   private String startTime;
 
-    private Date endTime;
+   private String endTime;
 }
