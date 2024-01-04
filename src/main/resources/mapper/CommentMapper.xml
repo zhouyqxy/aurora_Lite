@@ -87,7 +87,7 @@
                 and c.is_review = #{conditionVO.isReview}
             </if>
             <if test="conditionVO.keywords != null">
-                and u.nickname like concat('%',#{conditionVO.keywords},'%')
+                and u.nickname like '%'||#{conditionVO.keywords}||'%'
             </if>
         </where>
     </select>
@@ -115,7 +115,7 @@
                 and c.is_review = #{conditionVO.isReview}
             </if>
             <if test="conditionVO.keywords != null">
-                and u.nickname like concat('%',#{conditionVO.keywords},'%')
+                and u.nickname like '%'||#{conditionVO.keywords}||'%'
             </if>
         </where>
         ORDER BY

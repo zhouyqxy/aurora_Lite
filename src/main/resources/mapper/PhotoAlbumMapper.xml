@@ -22,7 +22,7 @@
         WHERE
         is_delete = 0
         <if test="condition.keywords != null">
-            and album_name like concat('%',#{condition.keywords},'%')
+            and album_name like '%'||#{condition.keywords}||'%'
         </if>
         ORDER BY
         id desc

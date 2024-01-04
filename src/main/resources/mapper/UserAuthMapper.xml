@@ -53,7 +53,7 @@
                 )
             </if>
             <if test="conditionVO.keywords != null">
-                and nickname like concat('%',#{conditionVO.keywords},'%')
+                and nickname like '%'||#{conditionVO.keywords}||'%'
             </if>
         </where>
         LIMIT #{current},#{size}
@@ -70,7 +70,7 @@
         LEFT JOIN t_user_info ui ON ua.user_info_id = ui.id
         <where>
             <if test="conditionVO.keywords != null">
-                nickname like concat('%',#{conditionVO.keywords},'%')
+                nickname like '%'||#{conditionVO.keywords}||'%'
             </if>
             <if test="conditionVO.loginType != null">
                 and login_type = #{conditionVO.loginType}

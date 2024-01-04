@@ -49,7 +49,7 @@
         LEFT JOIN t_article_tag at ON t.id = at.tag_id
         <where>
             <if test="conditionVO.keywords != null">
-                tag_name like concat('%',#{conditionVO.keywords},'%')
+                tag_name like '%'||#{conditionVO.keywords}||'%'
             </if>
         </where>
         GROUP BY

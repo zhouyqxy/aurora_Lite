@@ -88,7 +88,7 @@ public class IpUtil {
                 return ipInfo;
             }
         } catch (Exception e) {
-            log.error("getCityInfo exception:", e);
+//            log.error("getCityInfo exception:", e);
         }
         return "";
     }

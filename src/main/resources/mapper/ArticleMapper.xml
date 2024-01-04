@@ -414,7 +414,7 @@
         <where>
             is_delete = #{conditionVO.isDelete}
             <if test="conditionVO.keywords != null">
-                and article_title like concat('%',#{conditionVO.keywords},'%')
+                and article_title like '%'||#{conditionVO.keywords}||'%'
             </if>
             <if test="conditionVO.status != null">
                 and `status` = #{conditionVO.status}
@@ -462,7 +462,7 @@
         <where>
             is_delete = #{conditionVO.isDelete}
             <if test="conditionVO.keywords != null">
-                and article_title like concat('%',#{conditionVO.keywords},'%')
+                and article_title like '%'||#{conditionVO.keywords}||'%'
             </if>
             <if test="conditionVO.status != null">
                 and status = #{conditionVO.status}

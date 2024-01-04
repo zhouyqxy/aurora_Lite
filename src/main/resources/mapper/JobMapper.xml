@@ -6,7 +6,7 @@
         from t_job j
         <where>
             <if test="jobSearchVO.jobName!=null">
-                and j.job_name like concat('%',#{jobSearchVO.jobName},'%')
+                and j.job_name like '%'||#{jobSearchVO.jobName}||'%'
             </if>
             <if test="jobSearchVO.jobGroup!=null">
                 and j.job_group = #{jobSearchVO.jobGroup}
@@ -21,7 +21,7 @@
         from t_job j
         <where>
             <if test="jobSearchVO.jobName!=null">
-                and j.job_name like concat('%',#{jobSearchVO.jobName},'%')
+                and j.job_name like '%'||#{jobSearchVO.jobName}||'%'
             </if>
             <if test="jobSearchVO.jobGroup!=null">
                 and j.job_group = #{jobSearchVO.jobGroup}

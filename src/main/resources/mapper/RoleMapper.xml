@@ -63,7 +63,7 @@
         t_role
         <where>
             <if test="conditionVO.keywords != null ">
-                role_name like concat('%',#{conditionVO.keywords},'%')
+                role_name like '%'||#{conditionVO.keywords}||'%'
             </if>
         </where>
         LIMIT #{current}, #{size}

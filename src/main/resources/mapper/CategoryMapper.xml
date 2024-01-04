@@ -25,7 +25,7 @@
         LEFT JOIN t_article a ON c.id = a.category_id
         <where>
             <if test="conditionVO.keywords != null">
-                category_name like concat('%',#{conditionVO.keywords},'%')
+                category_name like '%'||#{conditionVO.keywords}||'%'
             </if>
         </where>
         GROUP BY
